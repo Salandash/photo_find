@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   
+   <div *ngIf="auth.authenticated()">
+    <ion-card>
+      <ion-item *ngIf="auth.user">
+        <ion-avatar item-left>
+          <img src="{{auth.user.picture}}">
+        </ion-avatar>
+        <h2>{{ auth.user.nickname }}</h2>
+        <p>{{ auth.user.email }}</p>
+      </ion-item>
+    </ion-card>
+    <button ion-button (click)="auth.logout()">Log out</button>
+  </div>
+  <div>
+  <h2> Welcome to Photo Finder!</h2>
+  <button ion-button full (click)="makeRequest()">Make Request</button>
+  <button ion-button (click)="takePicture()">Camera</button>
+  <p>
+    <img *ngIf="base64Image" [src]="base64Image" />
+  </p>
+  </div>
+</ion-content>

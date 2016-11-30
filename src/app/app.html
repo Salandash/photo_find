@@ -1,0 +1,27 @@
+<ion-menu id="login" [content]="content">
+    <ion-content>
+        <ion-list inset>
+            <ion-list-header>
+                Authenticate
+                <p>
+                    <img src="assets/img/profile.jpg" />
+                </p>
+            </ion-list-header>
+            <button *ngIf="!auth.authenticated()" ion-item menuClose color="primary" (click)="auth.login()">
+                <ion-icon item-left name="logo-facebook"></ion-icon>
+                Login with Facebook
+            </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<ion-menu id="authenticated" [content]="content">
+    <ion-content>
+        <ion-list>
+            <ion-list-header>
+                Hello!
+            </ion-list-header>
+            <ion-item>Hi! User</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>
